@@ -1,15 +1,82 @@
 <!DOCTYPE html>
 <html>
     <header>
-
+        <meta charset="UTF-8">
+        <title>Play RPS</title>
     </header>
     <body>
         <h1>Nothing to see here, open the console please</h1>
     
     <script>
+        let playerSelection;
+        let computerSelection;
+        let roundResult;
+
     function game(){}
-    function playerPlay(){}
-    function machinePlay(){}        
+    function playRound(){
+        playerPlay();
+        computerPlay();
+        switch(playerSelection){
+            case 'Rock':
+            if (computerSelection == 'Rock'){
+                roundResult = 'Well, that is a tie';
+            }else if(computerSelection == 'Paper'){
+                roundResult = "You Lose! "+computerSelection+" beats "+playerSelection+"!";
+            }else if(computerSelection == 'Scissors'){
+                roundResult = "You Win! "+playerSelection+" beats "+computerSelection+"!";
+            }else {
+                roundResult = "hums, Guess i made a mistake somewhere";
+            }
+            break;
+
+            case 'Paper':
+            if (computerSelection == 'Rock'){
+                roundResult = "You Win! "+playerSelection+" beats "+computerSelection+"!";
+            }else if(computerSelection == 'Paper'){
+                roundResult = 'Well, that is a tie';
+            }else if(computerSelection == 'Scissors'){
+                roundResult = "You Lose! "+computerSelection+" beats "+playerSelection+"!";
+            }else {
+                roundResult = "hums, Guess i made a mistake somewhere";
+            }
+            break;
+
+            case 'Scissors':
+            if (computerSelection == 'Rock'){
+                roundResult = "You Lose! "+computerSelection+" beats "+playerSelection+"!";
+            }else if(computerSelection == 'Paper'){
+                roundResult = "You Win! "+playerSelection+" beats "+computerSelection+"!";
+            }else if(computerSelection == 'Scissors'){
+                roundResult = 'Well, that is a tie';
+            }else {
+                roundResult = "hums, Guess i made a mistake somewhere";
+            }
+            break;
+            default:
+            roundResult = "hums, Guess i made a mistake somewhere in the switch";
+        }
+        return roundResult;
+    }
+    function playerPlay(){
+        playerSelection = prompt('Chose your Weapon!: Rock, Paper, Scissors','');
+        playerSelection = playerSelection.toLowerCase();
+        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+        return playerSelection;
+    }
+    function computerPlay(){
+        let num = Math.floor(Math.random()*100 +1);
+        if (num < 34){
+         computerSelection = 'Rock';   
+        }else if(num < 67){
+            computerSelection = 'Paper';
+        }else{
+            computerSelection = 'Scissors';
+        }
+        return computerSelection;   
+    }
+
+
+
     </script>
 
     </body>
